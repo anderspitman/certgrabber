@@ -27,9 +27,8 @@ func main() {
 
 	flag.Parse()
 
-	provider := getProvider(*dnsProvider, *dnsApiToken)
-
 	if *acmeChallengeType == "dns-01" {
+		provider := getProvider(*dnsProvider, *dnsApiToken)
 		certmagic.DefaultACME.DNS01Solver = &certmagic.DNS01Solver{
 			DNSProvider: provider,
 		}
